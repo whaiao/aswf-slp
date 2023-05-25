@@ -1,4 +1,4 @@
-### Updated: 5/15/23  
+### Updated: 5/25/23  
 ### Date: 5/10/23  
 ### Authors: Ninette Tan and Benjamin Beilharz
 ---
@@ -11,8 +11,8 @@
 2. Go to your `MAYA_APP_DIR/{maya_version}/scripts` (replace `{maya_version}` with your Maya version you are using), see this [link](https://help.autodesk.com/view/MAYAUL/2023/ENU/?guid=GUID-228CCA33-4AFE-4380-8C3D-18D23F7EAC72). 
 3. Create a new file called `userSetup.py` in the scripts folder, with the following content and save it:
 	```python
-	import importlib.reload as reload  # we might need this for further modification of our init script
-	import maya.cmds
+	from importlib import reload  # we might need this for further modification of our init script
+	import maya.cmds as cmds
    	cmds.commandPort(name="localhost:7001", sourceType="mel")
 	```
 4. Open Maya and create a new scene in the launcher.
