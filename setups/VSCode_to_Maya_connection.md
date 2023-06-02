@@ -39,7 +39,8 @@
 
 ## Ensure Maya's pip is working on Linux systems
 If you run into any error like this trying to install other packages in Maya: `pip is configured with locations that require TLS/SSL, however the ssl module in Python is not available.`  
-This might be a workaround for you (assuming you installed conda).
+This might be a workaround for you (assuming you installed conda, i.e. `sudo dnf install conda -y`).  
+
 ```bash
 # check if this fails and returns a SSL error
 /usr/autodesk/maya{yourVersionHere}/bin/mayapy -m pip -U pip
@@ -55,3 +56,5 @@ sudo cp libssl* /usr/autodesk/maya{yourVersionHere}/lib/
 /usr/autodesk/maya{yourVersionHere}/bin/mayapy -m pip install -U pip
 /usr/autodesk/maya{yourVersionHere}/bin/mayapy -m pip install pymel
 ```
+
+For other systems it might be worth to take a look at these [Maya Dependencies](https://help.autodesk.com/view/MAYAUL/2023/ENU/?guid=Maya_SDK_Open_Source_Components_Open_Source_Components_2023_3_html). If something is missing you can download the missing parts into your Maya installation folder.
