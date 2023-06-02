@@ -1,4 +1,4 @@
-### Updated: 5/25/23  
+### Updated: 6/2/23
 ### Date: 5/10/23  
 ### Authors: Ninette Tan and Benjamin Beilharz
 ---
@@ -36,3 +36,22 @@
 3. Reinstall `MayaPy` so it can set the path to your Maya installation again
 4. Save and close in your directory `C:\Users\{user}\Documents\maya\{version_number}\scripts (for Windows)`
 5. Restart Maya and VSCode, retry if you are now able to send `Python` code to Maya with step **5** from above.
+
+## Ensure Maya's pip is working on Linux systems
+If you run into any error like this trying to install other packages in Maya: `pip is configured with locations that require TLS/SSL, however the ssl module in Python is not available.`  
+This might be a workaround for you (assuming you installed conda).
+```bash
+# check if this fails and returns a SSL error
+/usr/autodesk/maya{yourVersionHere}/bin/mayapy -m pip -U pip
+## install conda here
+conda create -n mayapy python=$(/usr/autodesk/maya{yourVersionHere}/bin/mayapy -V | sed 's/.* //g')
+## navigate to the lib folder of the conda environment
+# either look the path up via:
+conda info -e
+# or for Linux (installed via package managers):
+cd ~/.conda/envs/mayapy/lib
+sudo cp libssl* /usr/autodesk/maya{yourVersionHere}/lib/
+# verify the fix:
+/usr/autodesk/maya{yourVersionHere}/bin/mayapy -m pip install -U pip
+/usr/autodesk/maya{yourVersionHere}/bin/mayapy -m pip install pymel
+```
